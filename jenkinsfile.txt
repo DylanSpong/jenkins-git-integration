@@ -24,13 +24,13 @@ pipeline{
             }
             post{
                 success{
-                    mail to: "dspong127@gmail.com"
-                    subject: "Testing Status Email"
+                    mail to: "dspong127@gmail.com",
+                    subject: "Testing Status Email",
                     body: "Testing successful"
                 }
                 failure{
-                    mail to: "dspong127@gmail.com"
-                    subject: "Testing Status Email"
+                    mail to: "dspong127@gmail.com",
+                    subject: "Testing Status Email",
                     body: "Testing failed"
                 }
             }
@@ -50,13 +50,13 @@ pipeline{
             }
             post{
                 success{
-                    mail to: "dspong127@gmail.com"
-                    subject: "Security Status Email"
+                    mail to: "dspong127@gmail.com",
+                    subject: "Security Status Email",
                     body: "Security scan did no detect any malicious code"
                 }
                 failure{
-                    mail to: "dspong127@gmail.com"
-                    subject: "Security Status Email"
+                    mail to: "dspong127@gmail.com",
+                    subject: "Security Status Email",
                     body: "Security scan detected malicious code"
                 }
             }
