@@ -11,43 +11,50 @@ pipeline{
             steps{
                 echo "Build Started"
                 echo "Fetch source code from $DIRECTORY_PATH"
-                echo "Compile the code and generate any necessary artifacts."
+                echo "Compiling code using Maven"
                 echo "Build complete"
             }
         }
-         stage('Test'){
+        stage('Unit and Integration Test'){
             steps{
-                echo "Test started"
-                echo "Unit tests"
-                echo "Integration tests"
-                echo "Test complete"
+                echo "Testing started"
+                echo "Completing unit testing with Katalon"
+                echo "Completing integration testing with Katalon"
+                echo "Unit and integration testing complete"
             }
         }
-         stage('Code Quality Check'){
+        stage('Code Analysis'){
             steps{
                 echo "Quality Check started"
-                echo "Checking quality of code"
+                echo "Checking quality of code with Coverity"
                 echo "Quality Check complete"
             }
         }
-        stage('Deploy'){
+        stage('Security Scan'){
+            steps{
+                echo "Security scan started"
+                echo "Scanning with Burp Suite"
+                echo "Security scan complete"
+            }
+        }
+        stage('Deployment to staging server'){
             steps{
                 echo "Deployment started"
-                echo "Deploying application to $TESTING_ENVIRONMENT"
+                echo "Deploying application to $TESTING_ENVIRONMENT on AWS EC2 server"
                 echo "Deployment complete"
             }
         }
-        stage('Approval'){
+        stage('Integration testing'){
             steps{
-                echo "Approval started"
+                echo "Integration test started"
                 sleep 10
-                echo "Approval complete"
+                echo "Integration test complete"
             }
         }
         stage('Deploy to production'){
             steps{
                 echo "Production started"
-                echo "Product Deployed to $PRODUCTION_ENVIRONMENT"
+                echo "Product Deployed to $PRODUCTION_ENVIRONMENT on AWS EC2 server"
                 echo "Production complete"
             }
         }
