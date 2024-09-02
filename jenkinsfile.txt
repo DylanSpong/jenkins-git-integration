@@ -17,26 +17,30 @@ pipeline{
         }
         stage('Unit and Integration Test'){
             steps{
-                echo "Testing started"
-                echo "Completing unit testing with Katalon"
-                echo "Completing integration testing with Katalon"
-                echo "Unit and integration testing complete"
+                echo "Testing started" | tee -a test.log
+                echo "Completing unit testing with Katalon" | tee -a test.log
+                echo "Completing integration testing with Katalon" | tee -a test.log
+                echo "Unit and integration testing complete" | tee -a test.log
+                
             }
             post{
+                always{
+                    archiveArtifacts: 'test.log', allowEmptyArchive: true
                 success{
                     script {
-                        def buildLog = readFile(file: "${env.WORKSPACE}/build.log")
                         mail to: "dspong127@gmail.com",
-                            subject: "Testing Status Email",
-                            body: "Testing successful\n\nBuild Log:\n${buildLog}"
+                        subject: "Testing Status Email",
+                        body: "Testing successful"
+                        attachmentsPattern: 'test.log'
                     }
                 }
                 failure{
                     script {
-                        def buildLog = readFile(file: "${env.WORKSPACE}/build.log")
                         mail to: "dspong127@gmail.com",
-                            subject: "Testing Status Email",
-                            body: "Testing failed\n\nBuild Log:\n${buildLog}"
+                        subject: "Testing Status Email",
+                        body: "Testing failed"
+                        attachmentsPattern: 'test.log'
+                        }
                     }
                 }
             }
