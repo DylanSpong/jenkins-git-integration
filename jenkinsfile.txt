@@ -24,16 +24,20 @@ pipeline{
             }
             post{
                 success{
-                    def buildLog = currentBuild.rawBuild.log.join("\n")
-                    mail to: "dspong127@gmail.com",
-                    subject: "Testing Status Email",
-                    body: "Testing successful\n\nBuild Log:\n${buildLog}"
+                    script {
+                        def buildLog = readFile(file: "${env.WORKSPACE}/build.log")
+                        mail to: "dspong127@gmail.com",
+                            subject: "Testing Status Email",
+                            body: "Testing successful\n\nBuild Log:\n${buildLog}"
+                    }
                 }
                 failure{
-                    def buildLog = currentBuild.rawBuild.log.join("\n")
-                    mail to: "dspong127@gmail.com",
-                    subject: "Testing Status Email",
-                    body: "Testing failed\n\nBuild Log:\n${buildLog}"
+                    script {
+                        def buildLog = readFile(file: "${env.WORKSPACE}/build.log")
+                        mail to: "dspong127@gmail.com",
+                            subject: "Testing Status Email",
+                            body: "Testing failed\n\nBuild Log:\n${buildLog}"
+                    }
                 }
             }
         }
