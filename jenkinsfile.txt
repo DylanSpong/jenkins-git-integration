@@ -27,7 +27,7 @@ pipeline{
                     mail to: "dspong127@gmail.com",
                     subject: "Testing Status Email",
                     body: "Testing successful"
-                    emailext attachLog: true
+                    body: emailext attachLog: true
                 }
                 failure{
                     mail to: "dspong127@gmail.com",
