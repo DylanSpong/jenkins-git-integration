@@ -24,15 +24,16 @@ pipeline{
             }
             post{
                 success{
+                    def buildLog = currentBuild.rawBuild.log.join("\n")
                     mail to: "dspong127@gmail.com",
                     subject: "Testing Status Email",
-                    body: "Testing successful"
-                    body: emailext attachLog: true
+                    body: "Testing successful\n\nBuild Log:\n${buildLog}"
                 }
                 failure{
+                    def buildLog = currentBuild.rawBuild.log.join("\n")
                     mail to: "dspong127@gmail.com",
                     subject: "Testing Status Email",
-                    body: "Testing failed"
+                    body: "Testing failed\n\nBuild Log:\n${buildLog}"
                 }
             }
         }
