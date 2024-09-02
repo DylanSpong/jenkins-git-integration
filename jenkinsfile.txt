@@ -17,10 +17,10 @@ pipeline{
         }
         stage('Unit and Integration Test'){
             steps{
-                echo "Testing started" | tee -a test.log
-                echo "Completing unit testing with Katalon" | tee -a test.log
-                echo "Completing integration testing with Katalon" | tee -a test.log
-                echo "Unit and integration testing complete" | tee -a test.log
+                echo "Testing started" | tee -a test.log,
+                echo "Completing unit testing with Katalon" | tee -a test.log,
+                echo "Completing integration testing with Katalon" | tee -a test.log,
+                echo "Unit and integration testing complete" | tee -a test.log,
                 
             }
             post{
