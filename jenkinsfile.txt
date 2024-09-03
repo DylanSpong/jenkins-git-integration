@@ -20,6 +20,7 @@ pipeline{
                 echo "Completing unit testing with Katalon"
                 echo "Completing integration testing with Katalon"
                 echo "Unit and integration testing complete"
+                sh 'echo "Test log content" > test.log'
                 }                
             post{
                 success{
