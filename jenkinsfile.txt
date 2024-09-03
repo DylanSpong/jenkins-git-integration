@@ -1,4 +1,3 @@
-
 pipeline{
     agent any
     environment {
@@ -24,14 +23,22 @@ pipeline{
                 }                
             post{
                 success{
-                    mail to: "dspong127@gmail.com",
-                    subject: "Testing Status Email",
-                    body: "Testing successful"
+                    archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
+                    emailext(
+                        to: "dspong127@gmail.com",
+                        subject: "Testing Status Email",
+                        body: "Testing successful"
+                        attachmentsPattern: 'test.log'
+                        )
                     }
                 failure{
-                    mail to: "dspong127@gmail.com",
-                    subject: "Testing Status Email",
-                    body: "Testing failed"
+                    archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
+                    emailext(
+                        mail to: "dspong127@gmail.com",
+                        subject: "Testing Status Email",
+                        body: "Testing failed"
+                        attachmentsPattern: 'test.log'
+                    )
                 }
             }
         }
