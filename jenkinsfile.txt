@@ -26,18 +26,11 @@ pipeline{
                 }                
             }
             post{
-                always{
-                    archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
-                    mail to: "dspong127@gmail.com",
-                    subject: "Build ${env.JOB_NAME} - ${env.BUILD_NUMBER} - Completed",
-                    body: "The build has completed. Please check the logs for details.",
-                    attachments: 'test.log'
                 success{
                     script {
                         mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing successful"
-                        attachments: 'test.log'
                     }
                 }
                 failure{
@@ -45,7 +38,6 @@ pipeline{
                         mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing failed"
-                        attachments: 'test.log'
                         }
                     }
                 }
