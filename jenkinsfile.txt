@@ -31,13 +31,13 @@ pipeline{
                     mail to: "dspong127@gmail.com",
                     subject: "Build ${env.JOB_NAME} - ${env.BUILD_NUMBER} - Completed",
                     body: "The build has completed. Please check the logs for details.",
-                    attachmentsPattern: 'test.log'
+                    attachments: 'test.log'
                 success{
                     script {
                         mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing successful"
-                        attachmentsPattern: 'test.log'
+                        attachments: 'test.log'
                     }
                 }
                 failure{
@@ -45,7 +45,7 @@ pipeline{
                         mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing failed"
-                        attachmentsPattern: 'test.log'
+                        attachments: 'test.log'
                         }
                     }
                 }
