@@ -22,22 +22,16 @@ pipeline{
                 echo "Completing integration testing with Katalon"
                 echo "Unit and integration testing complete"
                 }                
-            }
             post{
                 success{
-                    script {
-                        mail to: "dspong127@gmail.com",
-                        subject: "Testing Status Email",
-                        body: "Testing successful"
+                    mail to: "dspong127@gmail.com",
+                    subject: "Testing Status Email",
+                    body: "Testing successful"
                     }
-                }
                 failure{
-                    script {
-                        mail to: "dspong127@gmail.com",
-                        subject: "Testing Status Email",
-                        body: "Testing failed"
-                        }
-                    }
+                    mail to: "dspong127@gmail.com",
+                    subject: "Testing Status Email",
+                    body: "Testing failed"
                 }
             }
         }
@@ -89,3 +83,4 @@ pipeline{
             }
         }
     }
+}
