@@ -41,7 +41,6 @@ pipeline{
                         subject: "Testing Status Email",
                         body: "Testing failed"
                         attachmentsPattern: 'test.log'
-                        }
                     }
                 }
             }
