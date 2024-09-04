@@ -34,6 +34,7 @@ pipeline{
 
                     archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
                     echo "Logs have been captured and saved to test.log"
+                    }
                 }                
             post{
                 success{
