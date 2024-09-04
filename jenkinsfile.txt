@@ -36,7 +36,7 @@ pipeline{
                         subject: "Testing Status Email",
                         body: "Testing failed",
                         attachLog: true
-                    )
+                        )
                 }
             }
         }
@@ -55,14 +55,20 @@ pipeline{
             }
             post{
                 success{
-                    mail to: "dspong127@gmail.com",
-                    subject: "Security Status Email",
-                    body: "Security scan did not detect any malicious code"
+                    emailext(
+                        to: "dspong127@gmail.com",
+                        subject: "Security Status Email",
+                        body: "Security scan has not detected any malicious code",
+                        attachLog: true,
+                        )
                 }
                 failure{
-                    mail to: "dspong127@gmail.com",
-                    subject: "Security Status Email",
-                    body: "Security scan detected malicious code"
+                    emailext(
+                        to: "dspong127@gmail.com",
+                        subject: "Security Status Email",
+                        body: "Security scan has detected malicious code",
+                        attachLog: true,
+                        )
                 }
             }
         }
