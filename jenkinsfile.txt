@@ -23,20 +23,16 @@ pipeline{
                 }                
             post{
                 success{
-                    emailext(
-                        to: "dspong127@gmail.com",
+                        mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing successful",
-                        attachLog: true,
-                        )
+                        attachLog: true
                     }
                 failure{
-                    emailext(
-                        to: "dspong127@gmail.com",
+                        mail to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing failed",
                         attachLog: true
-                        )
                 }
             }
         }
