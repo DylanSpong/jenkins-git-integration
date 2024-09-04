@@ -20,7 +20,20 @@ pipeline{
                 echo "Completing unit testing with Katalon"
                 echo "Completing integration testing with Katalon"
                 echo "Unit and integration testing complete"
+                    script {
+                    
+                    def testLog = ""
 
+                    def result = sh(script: 'echo "This is a log message"', returnStdout: true).trim()
+                    logContent += result + "\n"
+
+                    result = sh(script: 'echo "Another log message"', returnStdout: true).trim()
+                    logContent += result + "\n"
+
+                    writeFile file: 'test.log', text: logContent
+
+                    archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
+                    echo "Logs have been captured and saved to test.log"
                 }                
             post{
                 success{
@@ -29,6 +42,7 @@ pipeline{
                         subject: "Testing Status Email",
                         body: "Testing successful",
                         attachLog: true
+                        attachmentsPattern = 'test.log'
                         )
                     }
                 failure{
