@@ -41,7 +41,7 @@ pipeline{
                         to: "dspong127@gmail.com",
                         subject: "Testing Status Email",
                         body: "Testing successful",
-                        attachLog: true
+                        attachLog: true,
                         attachmentsPattern = 'test.log'
                         )
                     }
