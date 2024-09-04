@@ -56,18 +56,18 @@ pipeline{
             post{
                 success{
                     emailext(
+                        attachLog: true,
                         to: "dspong127@gmail.com",
                         subject: "Security Status Email",
-                        body: "Security scan has not detected any malicious code",
-                        attachLog: true,
+                        body: "Security scan has not detected any malicious code"
                         )
                 }
                 failure{
                     emailext(
+                        attachLog: true,
                         to: "dspong127@gmail.com",
                         subject: "Security Status Email",
-                        body: "Security scan has detected malicious code",
-                        attachLog: true,
+                        body: "Security scan has detected malicious code"
                         )
                 }
             }
